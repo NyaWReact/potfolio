@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState } from 'react'
+import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import styles from './Burger.module.scss'
 import clsx from 'clsx'
 
@@ -23,8 +23,16 @@ const Burger: FC<IBurger> = ({setIsShowMenu, isShowMenu}) => {
     }
   }
 
-  console.log(isShowMenu);
-  
+
+
+  useEffect(() => {
+    if (isShowMenu) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'visible'
+    }
+  })
+
   return (
     <div className={styles.burger} onClick={() => clickBurger()}>
       <div className={clsx(styles.top_first, isShowMenu ? (isTop ? styles.top_second : styles['isOpen']) : styles['isClose'])}></div>

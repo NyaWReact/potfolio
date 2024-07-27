@@ -2,6 +2,7 @@
 
 .burger {
   position: absolute;
+  z-index: 999;
   padding: 10px;
 
   display: flex;
@@ -12,20 +13,23 @@
   width: 60px;
   height: 60px;
 
-  &:hover .top_first.isClose{
-    transform: translateY(-5px);
-  }
-  &:hover .top_second{
-    transform: translateY(10px)rotate(235deg);
-  }
-
-
-  &:hover .bottom_first.isClose{
-    transform: translateY(5px);
-  }
+  @media (hover:hover) {
+    
+    &:hover .top_first.isClose{
+      transform: translateY(-5px);
+    }
+    &:hover .top_second{
+      transform: translateY(10px)rotate(235deg);
+    }
   
-  &:hover .bottom_second{
-    transform: translateY(-10px)rotate(130deg);
+    &:hover .bottom_first.isClose{
+      transform: translateY(5px);
+    }
+    
+    &:hover .bottom_second{
+
+      transform: translateY(-10px)rotate(130deg);
+    }
   }
 
   .top_first, .middle_first, .bottom_first{
@@ -67,11 +71,12 @@
   .bottom_first {
     top: 40px;
 
+
     &.isOpen {
-      animation: isOpenBottom 0.90s cubic-bezier(.43,.77,.15,1.5) forwards;
+      animation: isOpenBottom 0.90s cubic-bezier(.43,.77,.15,1.0) forwards;
     }
     &.isClose {
-      animation: isCloseBottom 0.9s cubic-bezier(.43,.77,.15,1.5);
+      animation: isCloseBottom 0.9s cubic-bezier(.43,.77,.15,1.0);
     }
   }
   .bottom_second {
@@ -79,20 +84,6 @@
   }
 
 
-  // .bottom {
-  //   top: 40px
-  // }
-
-}
-
-.burger_show {
-  
-  &:hover .top {
-    color: aqua;
-  }
-  .top {
-    transform: rotate(90deg);
-  }
 }
 @keyframes isOpenTop{
   0% {
@@ -153,7 +144,7 @@
 
 @keyframes isCloseBottom {
   0% {
-    transform: translateY(-10px)rotate(-45deg) ;
+    transform: translateY(-10px)rotate(45deg) ;
   }
   50% {
     transform: translateY(-10px) ;
