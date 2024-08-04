@@ -8,10 +8,9 @@ import { Menu } from './menu/Menu'
 const Layout = () => {
 
   const [isShowMenu, setIsShowMenu] = useState(false)
-
   const [isAnimation, setIsAnimation] = useState(false)
-
-
+  const [condition, setCondition] = useState(true)
+  const [isAnimationMenu, setIsAnimationMenu] = useState(false)
   useEffect(() => {
     if (isShowMenu) {
       setIsAnimation(true)
@@ -28,8 +27,8 @@ const Layout = () => {
       <div className={styles.layout_content}>
         <Outlet/> 
       </div>
-      <Burger setIsShowMenu={setIsShowMenu} isShowMenu={isShowMenu}/>
-      {(isShowMenu || isAnimation) && <Menu isShowMenu={isShowMenu} isAnimation={isAnimation}/>}
+      <Burger setIsShowMenu={setIsShowMenu} isShowMenu={isShowMenu} condition={condition} setCondition={setCondition} isAnimationMenu={isAnimationMenu} setIsAnimationMenu={setIsAnimationMenu}/>
+      {(isShowMenu || isAnimation) && <Menu isShowMenu={isShowMenu} setIsShowMenu={setIsShowMenu} setCondition={setCondition} isAnimationMenu={isAnimationMenu} setIsAnimationMenu={setIsAnimationMenu}/>}
     </div>
   )
 }

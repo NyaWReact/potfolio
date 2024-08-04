@@ -1,0 +1,141 @@
+.project {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 440px;
+
+  height: 300px;
+  padding: 20px;
+  overflow: hidden;
+
+
+
+  .wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    background-color: #814b4b;
+
+    overflow: hidden;
+
+    &:hover .description {
+      top: 25px;
+    }
+
+    &:hover .description .open_info p{
+      animation: details  1s cubic-bezier(.42,-0.61,.47,2) forwards;
+    }
+    .header {
+      position: relative;
+      width: 100%;
+      height: 25px; 
+      background-color: #fff;
+      display: flex;
+      align-items: end;
+      z-index: 3;
+      .site {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 2px;
+        min-width: 30%;
+        padding: 0 4px;
+        height: 23px;
+        background-color: rgb(143, 143, 143);
+        border-start-start-radius: 6px;
+        border-start-end-radius: 6px;
+        
+        p {
+          font-size: 14px;
+          color: black;
+        }
+
+        .cross {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 20px;
+          height: 20px;
+
+          .line:nth-child(1) {
+            position: absolute;
+            transform: rotate(45deg);
+            width: 14px;
+            height: 1px;
+            background-color: #000000;
+          }
+          .line:nth-child(2n) {
+            position: absolute;
+
+            transform: rotate(-45deg);
+            width: 14px;
+            height: 1px;
+            background-color: #000000;
+          }
+        }
+      }
+    }
+    .content {
+      width: 100%;
+      height: 235px;
+      overflow: hidden;
+
+      img {  
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .description {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 25px);
+
+      background-color: #4b4b4bd7;
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transition: top 0.2s;
+
+      .open_info {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        height: 40px;
+        overflow: hidden;
+
+
+
+
+        p {
+          position: absolute;
+          top: -100px;
+          background-color: #fff;
+          
+        }
+      }
+    }
+  }
+
+}
+
+@keyframes details {
+  0% {
+    top: -100%;
+  } 
+
+  75% {
+    top: -100%;
+  }
+  100% {
+    top: 10px;
+  } 
+}

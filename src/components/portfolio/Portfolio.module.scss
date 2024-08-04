@@ -1,0 +1,34 @@
+@import '/public/scss/variable.scss';
+
+.portfolio {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  width: 100%;
+  
+  .wrapper {
+    width: 880px;
+    flex: 1;
+    
+    .info_page {
+      margin: 0 20px;
+      h1 {
+        color: $accent_text_color;
+        margin-bottom: 20px;
+      }
+  
+      .description {
+        margin-bottom: 30px;
+      }
+    }
+
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      
+      grid-template-columns: 50% 50%;
+    }
+  }
+}

@@ -1,44 +1,28 @@
-import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, FC, SetStateAction} from 'react'
 import styles from './Burger.module.scss'
 import clsx from 'clsx'
+import { useBurger } from './useBurger'
 
 
 interface IBurger {
   setIsShowMenu: Dispatch<SetStateAction<boolean>>
   isShowMenu: boolean
+  condition: boolean
+  setCondition: Dispatch<SetStateAction<boolean>>
+  setIsAnimationMenu: Dispatch<SetStateAction<boolean>>
+  isAnimationMenu: boolean
 }
 
-const Burger: FC<IBurger> = ({setIsShowMenu, isShowMenu}) => {
-  const [isTop, setIsTop] = useState(false)
-  const [isAnimation, setIsAnimation] = useState(false)
+const Burger: FC<IBurger> = ({setIsShowMenu, isShowMenu, condition, setCondition, setIsAnimationMenu, isAnimationMenu}) => {
 
-  const clickBurger = () => {
-    if (!isAnimation) {
-      setIsAnimation(true)
-      setIsShowMenu((state) => !state )
-      setTimeout(() => {
-        setIsTop(top => !top)
-        setIsAnimation(false)
-      }, 900)
-    }
-  }
+  const {activeBurger } = useBurger({isShowMenu, setIsShowMenu, setCondition, setIsAnimationMenu, isAnimationMenu})
 
-
-
-  useEffect(() => {
-    if (isShowMenu) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'visible'
-    }
-  })
-
+  
   return (
-    <div className={styles.burger} onClick={() => clickBurger()}>
-      <div className={clsx(styles.top_first, isShowMenu ? (isTop ? styles.top_second : styles['isOpen']) : styles['isClose'])}></div>
-      <div className={clsx(styles.middle_first, isShowMenu ? (isTop ? styles.middle_second : styles['isOpen']) : styles['isClose'])}></div>
-      <div className={clsx(styles.bottom_first, isShowMenu ? (isTop ? styles.bottom_second : styles['isOpen']) : styles['isClose'])}></div>
-
+    <div className={styles.burger} onClick={() => activeBurger()}>
+      <div className={clsx(styles.top, condition ? [styles.top_first, isAnimationMenu && styles['isOpen']] :  [styles.top_second, isAnimationMenu && styles['isClose']])}></div>
+      <div className={clsx(styles.middle, condition ? [styles.middle_first, isAnimationMenu && styles['isOpen']] : [styles.middle_second, isAnimationMenu && styles['isClose']])}></div>
+      <div className={clsx(styles.bottom, condition ? [styles.bottom_first, isAnimationMenu && styles['isOpen']] :  [styles.bottom_second, isAnimationMenu && styles['isClose']])}></div>
     </div>
   )
 }

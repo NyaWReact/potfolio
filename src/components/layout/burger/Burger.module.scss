@@ -1,7 +1,7 @@
 @import '/public/scss/variable.scss';
 
 .burger {
-  position: absolute;
+  position: fixed;
   z-index: 999;
   padding: 10px;
 
@@ -15,25 +15,41 @@
 
   @media (hover:hover) {
     
-    &:hover .top_first.isClose{
+    &:hover .top_first{
       transform: translateY(-5px);
     }
     &:hover .top_second{
-      transform: translateY(10px)rotate(235deg);
+      transform: translateY(10px) rotate(235deg);
     }
   
-    &:hover .bottom_first.isClose{
+    &:hover .bottom_first{
       transform: translateY(5px);
     }
     
     &:hover .bottom_second{
-
       transform: translateY(-10px)rotate(130deg);
     }
   }
 
-  .top_first, .middle_first, .bottom_first{
+  .top {
     position: absolute;
+    top: 20px;
+    width: 40px;
+    height: 2px;
+    background-color: $text_color;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  .bottom {
+    position: absolute;
+    top: 40px;
+    width: 40px;
+    height: 2px;
+    background-color: $text_color;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  .middle{
+    position: absolute;
+    top: 30px;
     width: 40px;
     height: 2px;
     background-color: $text_color;
@@ -41,69 +57,71 @@
   }
 
   .top_first {
-    top: 20px;
-
     &.isOpen {
       animation: isOpenTop 0.90s cubic-bezier(.43,.77,.15,1.5) forwards;
     }
-    &.isClose {
-      animation: isCloseTop 0.9s cubic-bezier(.43,.77,.15,1.5);
-    }
   }
   .top_second {
-    transform: translateY(10px) rotate(225deg) ;
+    transform: translateY(10px) rotate(225deg);
+    &.isClose {
+      animation: isCloseTop 0.9s cubic-bezier(.43,.77,.15,1.5) forwards;
+    }
   }
 
   .middle_first {
     top: 30px;
-
     &.isOpen {
       animation: isOpenMiddle 0.90s cubic-bezier(.43,.77,.15,1.5) forwards;
     }
-    &.isClose {
-      animation: isCloseMiddle 0.9s cubic-bezier(.43,.77,.15,1.5);
     }
   }
   .middle_second {
     opacity: 0;
+    
+    &.isClose {
+      animation: isCloseMiddle 0.9s cubic-bezier(.43,.77,.15,1.5);
+
+    }
+    
   }
 
+  
   .bottom_first {
-    top: 40px;
-
-
     &.isOpen {
-      animation: isOpenBottom 0.90s cubic-bezier(.43,.77,.15,1.0) forwards;
-    }
-    &.isClose {
-      animation: isCloseBottom 0.9s cubic-bezier(.43,.77,.15,1.0);
+      animation: isOpenBottom 0.90s cubic-bezier(.43,.77,.15,1.5) forwards;
     }
   }
   .bottom_second {
-    transform: translateY(-10px) rotate(135deg);
+    transform: translateY(-10px)rotate(135deg);
+    &.isClose {
+      animation: isCloseBottom 0.9s cubic-bezier(.43,.77,.15,1.5) forwards;
+    }
   }
 
 
-}
+
 @keyframes isOpenTop{
   0% {
+
   }
   50% {
-    transform: translateY(10px);
+    transform: translateY(10px);  
   }
+
   100% {
-    transform: translateY(10px)rotate(225deg) ;
+    transform: translateY(10px) rotate(225deg);
   }
 }
 
 @keyframes isCloseTop {
   0% {
-    transform: translateY(10px)rotate(225deg) ;
+    transform: translateY(10px) rotate(225deg);
   }
   50% {
-    transform: translateY(10px) ;
+    transform: translateY(10px) rotate(0deg);
   }
   100% {
+    transform: translateY(0px);
   }
 }
 
@@ -144,11 +162,13 @@
 
 @keyframes isCloseBottom {
   0% {
-    transform: translateY(-10px)rotate(45deg) ;
+    transform: translateY(-10px)rotate(135deg);
   }
   50% {
-    transform: translateY(-10px) ;
+    transform: translateY(-10px) rotate(0deg);
   }
   100% {
+    transform: translateY(0px) rotate(0deg);
+  
   }
 } 
