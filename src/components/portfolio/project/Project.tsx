@@ -31,7 +31,8 @@ const Project:FC<IProject> = ({children}) => {
         </div>
       <div className={styles.description}>
         <div className={styles.open_info}>
-          <p>Details</p>
+          <p className={styles.text_details}>Details</p>
+
         </div>
       </div>
       </div>

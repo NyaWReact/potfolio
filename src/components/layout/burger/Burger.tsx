@@ -14,10 +14,8 @@ interface IBurger {
 }
 
 const Burger: FC<IBurger> = ({setIsShowMenu, isShowMenu, condition, setCondition, setIsAnimationMenu, isAnimationMenu}) => {
-
   const {activeBurger } = useBurger({isShowMenu, setIsShowMenu, setCondition, setIsAnimationMenu, isAnimationMenu})
 
-  
   return (
     <div className={styles.burger} onClick={() => activeBurger()}>
       <div className={clsx(styles.top, condition ? [styles.top_first, isAnimationMenu && styles['isOpen']] :  [styles.top_second, isAnimationMenu && styles['isClose']])}></div>
