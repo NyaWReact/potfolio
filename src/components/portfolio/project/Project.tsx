@@ -1,25 +1,33 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
 import styles from './Project.module.scss'
+import { useNavigate } from 'react-router-dom'
+import { IProjectInfo } from '../interfaceProject'
 
 interface IProject {
-  children: ReactNode
+
+  project: IProjectInfo
 }
 
 
 
-const Project:FC<IProject> = ({children}) => {
+const Project:FC<IProject> = ({ project}) => {
 
   const hover = () => {
     console.log('hover');
     
   }
+  const nav = useNavigate()
+
+  const handleRoute = () => {
+    nav( `${project.name}`)
+  }
 
   return (
-    <div className={styles.project} onMouseEnter={() => hover()}>
+    <div className={styles.project} onMouseEnter={() => hover()} onClick={() => handleRoute()}>
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <div className={styles.site}>
-            <p>nameSitedsdasdasd</p>
+            <p>{project.name}</p>
             <div className={styles.cross}>
               <div className={styles.line}></div>
               <div className={styles.line}></div>
@@ -27,7 +35,7 @@ const Project:FC<IProject> = ({children}) => {
           </div>
         </div>
         <div className={styles.content}>
-            {children}
+            <img src={`/img/${project.img[0]}`} alt="" />
         </div>
       <div className={styles.description}>
         <div className={styles.open_info}>

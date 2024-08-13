@@ -27,7 +27,7 @@
     }
 
     &:hover .description .open_info .text_details{
-      animation: details  1s cubic-bezier(.42,-0.61,.47,2) forwards;
+      animation: details  0.6s cubic-bezier(.42,-0.61,.47,2) forwards;
     }
     .header {
       position: relative;

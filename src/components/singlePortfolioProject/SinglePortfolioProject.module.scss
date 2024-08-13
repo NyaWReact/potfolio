@@ -1,0 +1,30 @@
+@import '/public/scss/variable.scss';
+
+
+.project {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  width: 100%;
+  
+  .wrapper {
+    width: 880px;
+    margin: 0 20px;
+
+    .header {
+      width: 100%;
+      h1 {
+        color: $accent_text_color;
+
+      }
+
+
+      .smallDescription {
+        font-size: 1.4rem;
+        margin: 20px 0;
+      }
+    }
+  }
+}
