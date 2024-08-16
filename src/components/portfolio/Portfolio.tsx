@@ -1,14 +1,54 @@
 import { useEffect, useState } from 'react'
 import styles from './Portfolio.module.scss'
 import { Project } from './project/Project'
-import { myProjects } from '/public/DataBase/MyProject'
 import { IProjectInfo } from './interfaceProject'
 
 
 const Portfolio = () => {
 
   const [myProject, setMyProject] = useState<IProjectInfo[]>()
-
+  const myProjects = [
+    {
+      name: 'games',
+      smallDescription: 'sDes',
+      img: [
+        'games_1.webp',
+        'games_2.webp',
+        'games_3.webp',
+      ],
+      description: 'description',
+      stack: [
+        '1',
+        '2'
+      ]
+    }, 
+    {
+      name: '123',
+      smallDescription: 'sDes',
+      img: [
+     'games_1.webp',
+        'games_2.webp',
+        'games_3.webp',
+      ],
+      description: 'description',
+      stack: [
+        '1',
+        '2'
+      ]
+    },
+    {
+      name: 'dasdass',
+      smallDescription: 'sDes',
+      img: [
+       'games_1.webp',
+      ],
+      description: 'description',
+      stack: [
+        '1',
+        '2'
+      ]
+    }
+  ]
   useEffect(() => {
     setMyProject(myProjects)
   }, [])
