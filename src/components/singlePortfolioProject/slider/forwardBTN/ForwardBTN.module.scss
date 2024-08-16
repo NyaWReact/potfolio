@@ -1,0 +1,113 @@
+.forward_btn{
+  height: 100%;
+  width: 20%;
+  display: block;
+  position: absolute;
+  background-color: transparent;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  z-index: 10;
+}
+
+
+.forward_btn {
+  right: 0;
+  background: rgb(0,0,0);
+  background: linear-gradient(267deg, rgba(0,0,0,0.9635503859747023) 0%, rgba(0,0,0,0.6834383411567753) 42%, rgba(0,0,0,0) 95%);
+  opacity: 0.3;
+  transition: opacity 0.2s;
+
+  &:hover .arrow:before {
+    transform: rotate(123deg);    
+  }
+  &:hover .arrow:after {
+    transform: rotate(-123deg);    
+  }
+
+  .arrow {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 30px;
+    width: 20px;
+    height: 20px;
+
+    &::before {
+      content: ' ';
+      position: absolute;
+      top: calc(50% - 2px);
+      transform: rotate(135deg);
+      width: 30px;
+      height: 2px;
+      background-color: rgb(255, 255, 255);;
+      transition:  transform 0.2s ease;
+      transform-origin: center left;
+    }
+    &::after {
+      content: ' ';
+      position: absolute;
+
+      transform: rotate(-135deg);
+      width: 30px;
+      height: 2px;
+      background-color: rgb(255, 255, 255);;
+      transition:  transform 0.2s ease;
+      transform-origin: center left;
+    }
+  }
+
+  .arrow_animation {
+    animation: arrowForward 1s forwards;
+    &:before{
+      animation: arrowForwardBefore 1s forwards;
+    }
+    &:after {
+      animation: arrowForwardAfter 1s forwards;
+    }
+  }
+  
+  &:hover {
+    opacity: 0.4;
+  }
+}
+
+@keyframes arrowForwardAfter {
+  0% {
+    transform: rotate(-135deg);
+  }
+  25% {
+    transform: rotate(-180deg);
+  }
+  100% {
+    transform: rotate(-135deg);
+  }
+}
+
+@keyframes arrowForwardBefore {
+  0% {
+    transform: rotate(135deg);
+  }
+  25% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(135deg);
+  }
+}
+
+@keyframes arrowForward {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

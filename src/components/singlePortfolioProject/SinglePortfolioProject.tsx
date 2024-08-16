@@ -16,7 +16,6 @@ const SinglePortfolioProject = () => {
       setProject(project)
     } 
   }, [name])
-  console.log(project);
   
   
   return (

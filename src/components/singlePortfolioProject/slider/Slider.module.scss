@@ -14,8 +14,10 @@
 
 
     img {
+      position: absolute;
       width: 100%;
       height: 100%;
+      z-index: 5;
     }
 
 
@@ -23,82 +25,24 @@
       animation: backAppear 1s forwards;
     }
 
-    .previous_images {
-      
+    .forwardAnimation {
+      animation: forwardAppear 1s forwards
+    }
+
+    .images {
       img {
-        transition: left 0.5s;
-        left: -100%;
+        transition: left 0.5s, right 0.5s;
         position: absolute;
+        opacity: 0;
+        z-index: 4;
       }
       
       .previous_click {
         animation: appearPreviousImg 1s;
       }
-
-    }
-
-    .forward_btn{
-      height: 100%;
-      width: 20%;
-      display: block;
-      position: absolute;
-      background-color: transparent;
-      top: 50%;
-      transform: translateY(-50%);
-      border: none;
-      z-index: 10;
-    }
-
-    
-    .forward_btn {
-      right: 0;
-      background: rgb(0,0,0);
-      background: linear-gradient(267deg, rgba(0,0,0,0.9635503859747023) 0%, rgba(0,0,0,0.6834383411567753) 42%, rgba(0,0,0,0) 95%);
-      opacity: 0.3;
-      transition: opacity 0.2s;
-
-      &:hover .arrow:before {
-        transform: rotate(123deg);    
-      }
-      &:hover .arrow:after {
-        transform: rotate(-123deg);    
-      }
-
-      .arrow {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        right: 30px;
-        width: 20px;
-        height: 20px;
-
-        &::before {
-          content: ' ';
-          position: absolute;
-          top: calc(50% - 2px);
-          transform: rotate(135deg);
-          width: 30px;
-          height: 2px;
-          background-color: rgb(255, 255, 255);;
-          transition:  transform 0.2s ease;
-          transform-origin: center left;
-        }
-        &::after {
-          content: ' ';
-          position: absolute;
-
-          transform: rotate(-135deg);
-          width: 30px;
-          height: 2px;
-          background-color: rgb(255, 255, 255);;
-          transition:  transform 0.2s ease;
-          transform-origin: center left;
-        }
-      }
-
-      &:hover {
-        opacity: 0.4;
+      
+      .forward_click {
+        animation: appearForwardImg 1s;
       }
     }
   }
@@ -139,17 +83,22 @@
       }
     }
   }
-
 }
 
 
 @keyframes appearPreviousImg {
   0%{ 
     left: -100%;
+    opacity: 1;
   }
+  25% {
+    left: -100%;
+    opacity: 1;
 
+  }
   100% {
     left: 0;
+    opacity: 1;
   }
 }
 
@@ -157,8 +106,26 @@
   0% {
     transform: translateX(0);
   }
+  50% {
+    transform: translateX(0);
 
+  }
   100% {
     transform: translateX(100%);
+  }
+}
+
+@keyframes forwardAppear {
+  0% {
+    transform: translateX(0);
+    z-index: 3;
+  }
+  50% {
+    transform: translateX(0);
+    
+
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }
