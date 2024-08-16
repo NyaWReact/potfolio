@@ -2,12 +2,55 @@ import {useEffect, useState } from 'react'
 import { IProjectInfo } from '../portfolio/interfaceProject'
 import styles from './SinglePortfolioProject.module.scss'
 
-import { myProjects } from '/public/DataBase/MyProject'
 import { useParams } from 'react-router-dom'
 import { Slider } from './slider/Slider'
 
 
 const SinglePortfolioProject = () => {
+
+  const myProjects = [
+    {
+      name: 'games',
+      smallDescription: 'sDes',
+      img: [
+        'games_1.webp',
+        'games_2.webp',
+        'games_3.webp',
+      ],
+      description: 'description',
+      stack: [
+        '1',
+        '2'
+      ]
+    }, 
+    {
+      name: '123',
+      smallDescription: 'sDes',
+      img: [
+     'games_1.webp',
+        'games_2.webp',
+        'games_3.webp',
+      ],
+      description: 'description',
+      stack: [
+        '1',
+        '2'
+      ]
+    },
+    {
+      name: 'dasdass',
+      smallDescription: 'sDes',
+      img: [
+       'games_1.webp',
+      ],
+      description: 'description',
+      stack: [
+        '1',
+        '2'
+      ]
+    }
+  ]
+
   const {name} = useParams()
   const [project, setProject] = useState<IProjectInfo>()
   useEffect(() => {
