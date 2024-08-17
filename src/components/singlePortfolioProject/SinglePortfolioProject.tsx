@@ -7,6 +7,7 @@ import { Slider } from './slider/Slider'
 
 
 const SinglePortfolioProject = () => {
+  const [loaded, setLoaded] = useState(false)
 
   const myProjects = [
     {
@@ -61,14 +62,17 @@ const SinglePortfolioProject = () => {
   }, [name])
   
   
+  
   return (
     <div className={styles.project}>
       <div className={styles.wrapper}>  
+        {!loaded && <div>Loading</div> }
+
         <div className={styles.header}>
           <h1>{project?.name}</h1>
           <h2 className={styles.smallDescription}>{project?.smallDescription}</h2>
         </div>
-        <Slider photo={project?.img}/>
+        <Slider photo={project?.img} setLoaded={setLoaded}/>
       </div>
     </div>
   )

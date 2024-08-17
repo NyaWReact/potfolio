@@ -102,6 +102,22 @@
   }
 }
 
+@keyframes appearForwardImg {
+  0%{ 
+    left: 100%;
+    opacity: 1;
+  }
+  25% {
+    left: 100%;
+    opacity: 1;
+
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
 @keyframes backAppear {
   0% {
     transform: translateX(0);
